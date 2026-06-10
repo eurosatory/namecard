@@ -6,44 +6,41 @@
 <title>명함</title>
 
 <style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+body{
+    margin:0;
+    width:100vw;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:#fff;
 }
 
-body {
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: #ffffff;
-    overflow: hidden;
-}
-
-a {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-img {
-    max-width: 90vw;
-    max-height: 90vh;
-    object-fit: contain;
-    cursor: pointer;
-    -webkit-user-drag: none;
-    user-select: none;
+img{
+    max-width:90vw;
+    max-height:90vh;
+    object-fit:contain;
+    cursor:pointer;
+    -webkit-user-drag:none;
+    user-select:none;
 }
 </style>
 </head>
-
 <body>
 
-<a href="01.png" download>
-    <img src="01.png" alt="namecard">
+<a id="downloadLink" download>
+    <img id="cardImage" alt="명함">
 </a>
+
+<script>
+const params = new URLSearchParams(window.location.search);
+const id = params.get("id") || "1";
+
+const filename = `p${id}.png`;
+
+document.getElementById("cardImage").src = filename;
+document.getElementById("downloadLink").href = filename;
+</script>
 
 </body>
 </html>
